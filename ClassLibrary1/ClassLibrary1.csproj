@@ -1,0 +1,12 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>uap10.0.16299</TargetFrameworks>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="BlankPage1.xaml" />
+    <Page Include="BlankPage1.xaml" />
+  </ItemGroup> 
+</Project>

@@ -1,0 +1,24 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>uap10.0.16299</TargetFrameworks>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ProjectReference></ProjectReference>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj">
+      <Private>False</Private>
+    </ProjectReference>
+    <None Remove="BlankPage2.xaml" />
+    <Page Include="BlankPage2.xaml" />
+  </ItemGroup>
+
+  <Target Name="_MakeTransitiveProjectRefsNonPrivate" AfterTargets="IncludeTransitiveProjectReferences">
+    <ItemGroup>
+      <!-- remove the transitive project references and re-add them as non-private project references -->
+      <ProjectReference Remove="@(_TransitiveProjectReferences)" />
+      <ProjectReference Include="@(_TransitiveProjectReferences)" Private="False" />
+    </ItemGroup>
+  </Target>
+</Project>
